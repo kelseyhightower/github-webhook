@@ -1,0 +1,14 @@
+apiVersion: projectriff.io/v1
+kind: Function
+metadata:
+  name: github-webhook
+spec:
+  container:
+    image: gcr.io/hightowerlabs/github-webhook
+    resources:
+      requests:
+        cpu: "1"
+        memory: "1Gi"
+  input: github
+  protocol: http
+  idleTimeoutMs: 60000

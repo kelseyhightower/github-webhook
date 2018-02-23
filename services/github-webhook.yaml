@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: github-webhook
+  labels:
+    app: github-webhook
+spec:
+  ports:
+  - name: http
+    port: 8080
+  selector:
+    app: github-webhook

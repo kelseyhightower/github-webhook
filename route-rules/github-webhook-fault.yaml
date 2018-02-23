@@ -1,0 +1,16 @@
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: github-webhook-fault
+  namespace: default
+spec:
+  destination:
+    name: github-webhook
+  precedence: 1
+  route:
+    - labels:
+        version: v1
+  httpFault:
+     abort:
+       percent: 100
+       httpStatus: 403

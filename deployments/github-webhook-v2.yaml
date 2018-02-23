@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-webhook
+  labels:
+    app: github-webhook
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-webhook
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: github-webhook
+        version: v2
+    spec:
+      containers:
+        - name: github-webhook
+          image: gcr.io/hightowerlabs/github-webhook:v2
+          ports:
+            - containerPort: 8080
