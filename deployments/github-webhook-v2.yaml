@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: github-webhook
+  name: github-webhook-v2
   labels:
     app: github-webhook
     version: v2

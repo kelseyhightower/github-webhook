@@ -4,7 +4,7 @@ metadata:
   name: github-webhook
 spec:
   container:
-    image: gcr.io/hightowerlabs/github-webhook
+    image: gcr.io/hightowerlabs/github-webhook:v1
     resources:
       requests:
         cpu: "1"

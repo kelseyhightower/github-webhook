@@ -1,0 +1,9 @@
+kind: EgressRule
+metadata:
+  name: github-hooks-1
+spec:
+  destination:
+      service: 192.30.252.0/22
+  ports:
+      - port: 443
+        protocol: tcp

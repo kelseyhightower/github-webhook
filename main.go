@@ -14,9 +14,9 @@ import (
 )
 
 
-const version = "github-webhook v1"
+const version = "github-webhook v2"
 
-var gitVersion = "git version 2.11.0"
+var requiredGitVersion = "git version 2.11.0"
 
 func main() {
 	log.Println("Starting GitHub webhook...")
@@ -33,14 +33,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	version := strings.TrimSpace(string(output))
+	gitVersion := strings.TrimSpace(string(output))
 
-	if version != gitVersion {
-		log.Fatalf("git version mismatch. Got %s want %s", version, gitVersion)
+	if gitVersion != requiredGitVersion {
+		log.Fatalf("git version mismatch. Got %s want %s", gitVersion, requiredGitVersion)
 	}
 
 	http.HandleFunc("/version", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, version)
+		fmt.Fprintf(w, version + "\n")
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

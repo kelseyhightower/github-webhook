@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: github-webhook
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+    - host: github-webhook.hightowerlabs.com 
+      http:
+        paths:
+          - backend:
+              serviceName: github-webhook
+              servicePort: 8080
